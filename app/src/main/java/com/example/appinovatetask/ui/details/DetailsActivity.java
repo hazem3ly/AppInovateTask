@@ -53,6 +53,8 @@ public class DetailsActivity extends BindingActivity<ActivityDetailsBinding> {
         Country country = (Country) getIntent().getSerializableExtra(COUNTRY_DATA);
         getBinding().setCountry(country);
 
+        vm.loadCountryDetails(country.getId());
+        setTitle(country.getName());
 
     }
 }

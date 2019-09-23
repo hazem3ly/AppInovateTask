@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 public class Info {
 
     @SerializedName("info")
-    private String info;
+    private String info = "";
 
     public String getInfo() {
         return info;

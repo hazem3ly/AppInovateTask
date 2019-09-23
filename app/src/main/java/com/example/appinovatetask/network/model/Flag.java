@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class Flag {
     @SerializedName("flag_img")
-    private String flag;
+    private String flag = "";
 
     public String getFlag() {
         return flag;

@@ -8,6 +8,7 @@ import android.widget.LinearLayout;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.appinovatetask.R;
 import com.example.appinovatetask.customView.CountryView;
 import com.example.appinovatetask.network.model.Continent;
 import com.example.appinovatetask.network.model.Country;
@@ -74,7 +75,8 @@ public class ContinentsAdapter extends RecyclerView.Adapter<ContinentsViewHolder
         });
         countryView.setLayoutParams(params);
         countryView.setText(country.getName());
-        Picasso.get().load(country.getFlag()).resize(0, 300).into(countryView.getImageView());
+        Picasso.get().load(country.getFlag()) .placeholder(R.drawable.ic_launcher_background)
+                .error(R.drawable.error).resize(0, 300).into(countryView.getImageView());
 
         return countryView;
     }

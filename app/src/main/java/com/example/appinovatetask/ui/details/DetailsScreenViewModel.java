@@ -1,20 +1,17 @@
 package com.example.appinovatetask.ui.details;
 
+import androidx.lifecycle.MutableLiveData;
+
 import com.example.appinovatetask.app.BaseViewModel;
-import com.example.appinovatetask.app.NotNullMutableLiveData;
 import com.example.appinovatetask.network.model.BaseResponse;
-import com.example.appinovatetask.network.model.Continent;
 import com.example.appinovatetask.network.model.Flag;
 import com.example.appinovatetask.network.model.Images;
 import com.example.appinovatetask.network.model.Info;
 import com.example.appinovatetask.repo.Repository;
 
-import java.util.ArrayList;
-
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Function3;
 import io.reactivex.schedulers.Schedulers;
 
 public class DetailsScreenViewModel extends BaseViewModel {
@@ -25,17 +22,17 @@ public class DetailsScreenViewModel extends BaseViewModel {
         this.repository = repository;
     }
 
-    private NotNullMutableLiveData<Info> _info = new NotNullMutableLiveData<>(new Info());
-    private NotNullMutableLiveData<Flag> _flag = new NotNullMutableLiveData<>(new Flag());
-    private NotNullMutableLiveData<Images> _images = new NotNullMutableLiveData<>(new Images());
+    private MutableLiveData<Info> _info = new MutableLiveData<>(new Info());
+    private MutableLiveData<Flag> _flag = new MutableLiveData<>(new Flag());
+    private MutableLiveData<Images> _images = new MutableLiveData<>(new Images());
 
-    public NotNullMutableLiveData<Info> getInfo() {
+    public MutableLiveData<Info> getInfo() {
         return _info;
     }
-    public NotNullMutableLiveData<Flag> getFlag() {
+    public MutableLiveData<Flag> getFlag() {
         return _flag;
     }
-    public NotNullMutableLiveData<Images> getimages() {
+    public MutableLiveData<Images> getImages() {
         return _images;
     }
 

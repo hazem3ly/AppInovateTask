@@ -14,8 +14,14 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ui.details.DetailsActivity"></activity>
-        <activity android:name=".ui.main.MainActivity">
+        <activity android:name=".ui.details.DetailsActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.appinovatetask.ui.main.MainActivity" />
+        </activity>
+        <activity android:name=".ui.main.MainActivity"
+            android:launchMode="singleTop"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

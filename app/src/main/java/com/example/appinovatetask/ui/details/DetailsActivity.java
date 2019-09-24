@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.example.appinovatetask.DI;
 import com.example.appinovatetask.R;
 import com.example.appinovatetask.app.BindingActivity;
 import com.example.appinovatetask.databinding.ActivityDetailsBinding;
@@ -23,10 +24,6 @@ import static com.example.appinovatetask.app.Const.COUNTRY_DATA;
 
 public class DetailsActivity extends BindingActivity<ActivityDetailsBinding> {
 
-    private ApiService apiService;
-    private Repository repository;
-    private DetailsScreenViewModelProvider viewModelProvider;
-
     @Override
     protected int getLayoutResId() {
         return R.layout.activity_details;
@@ -41,9 +38,7 @@ public class DetailsActivity extends BindingActivity<ActivityDetailsBinding> {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        apiService = ApiClient.getClient().create(ApiService.class);
-        repository = new RepositoryImpl(apiService);
-        viewModelProvider = new DetailsScreenViewModelProvider(repository);
+        DetailsScreenViewModelProvider viewModelProvider = new DetailsScreenViewModelProvider(DI.provideRepo());
 
         DetailsScreenViewModel vm = ViewModelProviders.of(this, viewModelProvider).get(DetailsScreenViewModel.class);
 

@@ -5,8 +5,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.lifecycle.MutableLiveData;
+
 import com.example.appinovatetask.app.BaseViewModel;
-import com.example.appinovatetask.app.NotNullMutableLiveData;
 import com.example.appinovatetask.network.model.BaseResponse;
 import com.example.appinovatetask.network.model.Continent;
 import com.example.appinovatetask.network.model.Country;
@@ -31,9 +32,9 @@ import static com.example.appinovatetask.app.Const.COUNTRY_DATA;
 public class MainScreenViewModel extends BaseViewModel {
     private Repository repository;
 
-    private NotNullMutableLiveData<ArrayList<Continent>> _items = new NotNullMutableLiveData<>(new ArrayList<>());
+    private MutableLiveData<ArrayList<Continent>> _items = new MutableLiveData<>(new ArrayList<>());
 
-    public NotNullMutableLiveData<ArrayList<Continent>> getItems() {
+    public MutableLiveData<ArrayList<Continent>> getItems() {
         return _items;
     }
 
@@ -43,12 +44,10 @@ public class MainScreenViewModel extends BaseViewModel {
     }
 
     private void getIds() {
-
         Disposable disposable = repository.getIds()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(this::bindList, this::handleError);
-
         addToDisposable(disposable);
     }
 
@@ -83,16 +82,13 @@ public class MainScreenViewModel extends BaseViewModel {
                             _items.setValue(items);
                         }
                     }
-
                     @Override
                     public void onError(Throwable e) {
                     }
-
                     @Override
                     public void onComplete() {
                     }
                 });
-
         addToDisposable(disposable);
     }
 
